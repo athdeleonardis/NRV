@@ -2,7 +2,7 @@
 CC=g++
 CFLAGS=-std=c++17 -Wall -Wextra
 LIBS=-lGL -lglfw -lGLEW
-COMPILE=$(CC) $(CFLAGS) $(LIBS) $^ -o $@
+COMPILE=$(CC) $(CFLAGS) -g -o $@ $^ $(LIBS)
 # Directories
 SRC_DIR=src
 OBJ_DIR=obj

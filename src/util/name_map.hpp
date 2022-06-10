@@ -1,5 +1,5 @@
-#ifndef NAMEMAP
-#define NAMEMAP
+#ifndef NRV_NAMEMAP
+#define NRV_NAMEMAP
 
 #include <cstdint>
 #include <string>

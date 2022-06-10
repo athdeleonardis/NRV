@@ -1,4 +1,4 @@
-#include "../../src/util/name_map.h"
+#include "../../src/util/name_map.hpp"
 #include <iostream>
 
 using namespace NRV::Utilities;

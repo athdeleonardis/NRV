@@ -1,4 +1,4 @@
-#include "name_map.h"
+#include "name_map.hpp"
 
 namespace NRV::Utilities {
     NameMap::NameMap() {
