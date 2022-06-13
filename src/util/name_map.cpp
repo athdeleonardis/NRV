@@ -1,10 +1,12 @@
 #include "name_map.hpp"
 
 namespace NRV::Utilities {
+    //
+    // NameMap Public Methods
+    //
+
     NameMap::NameMap() {
-        pr_id_counter = 1;
-        pr_name_to_id = std::unordered_map<name_t,id_t>();
-        pr_id_to_name = std::unordered_map<id_t,name_t>();
+        pr_map = map_t();
     }
 
     NameMap::~NameMap() {
@@ -12,18 +14,16 @@ namespace NRV::Utilities {
     }
 
     NameMap::id_t NameMap::operator<<(name_t name) {
-        pr_name_to_id[name] = pr_id_counter;
-        pr_id_to_name[pr_id_counter] = name;
-        id_t id = pr_id_counter;
-        pr_id_counter++;
+        id_t id = prGenerateId();
+        pr_map[name] = id;
         return id;
     }
 
-    NameMap::id_t NameMap::operator[](name_t name) {
-        return pr_name_to_id[name];
+    void NameMap::operator>>(name_t name) {
+        pr_map.erase(name);
     }
 
-    NameMap::name_t NameMap::operator[](id_t id) {
-        return pr_id_to_name[id];
+    NameMap::id_t NameMap::operator[](name_t name) {
+        return pr_map[name];
     }
 }

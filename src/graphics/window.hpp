@@ -13,16 +13,20 @@ namespace NRV::Graphics {
     private:
         GLFWwindow* pr_glfw_window;
         bool pr_is_closed;
+        float pr_width;
+        float pr_height;
     private:
         void createGLFWWindow(name_t name, int width, int height, bool is_fullscreen);
     public:
-        Window(name_t name, bool is_fullscreen);
-        Window(name_t name, int width, int height, bool is_fullscreen);
+        Window(name_t name);
+        Window(name_t name, int width, int height);
         ~Window();
         void draw();
         void close();
         bool shouldClose();
         GLFWwindow* getGLFWWindow();
+        float getWidth();
+        float getHeight();
     };
 }
 
