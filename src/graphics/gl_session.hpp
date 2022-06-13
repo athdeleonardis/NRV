@@ -3,6 +3,8 @@
 
 namespace NRV::Graphics {
     class GLSession {
+    private:
+        void prApplyWindowHints();
     public:
         GLSession();
         ~GLSession();

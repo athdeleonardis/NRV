@@ -10,6 +10,8 @@ private:
     id_t prGenerateId() override {
         return pr_id_counter++;
     }
+public:
+    TestMap() : NameMap(NULL) {}
 };
 
 int main() {

@@ -13,6 +13,14 @@ namespace NRV::Graphics {
             exit(EXIT_FAILURE);
         }
 
+        prApplyWindowHints();
+    }
+
+    GLSession::~GLSession() {
+        glfwTerminate();
+    }
+
+    void GLSession::prApplyWindowHints() {
         // 4x antialiasing
         glfwWindowHint(GLFW_SAMPLES, 4);
         // OpenGL v3.3
@@ -23,9 +31,5 @@ namespace NRV::Graphics {
         // Don't allow deprecated functions
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    }
-
-    GLSession::~GLSession() {
-        glfwTerminate();
     }
 }

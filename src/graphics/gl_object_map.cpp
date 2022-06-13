@@ -13,6 +13,11 @@ namespace NRV::Graphics {
     // Vertex Array Map
     //
 
+    VertexArrayMap::VertexArrayMap()
+    : BindableNameMap(
+        [](id_t id) { glDeleteVertexArrays(1, &id); }
+    ) {}
+
     VertexArrayMap::id_t VertexArrayMap::prGenerateId() {
         id_t f_id;
         glGenVertexArrays(1, &f_id);
@@ -26,6 +31,11 @@ namespace NRV::Graphics {
     //
     // Vertex Buffer Map
     //
+
+    VertexBufferMap::VertexBufferMap()
+    : BindableNameMap(
+        [](id_t id) { glDeleteBuffers(1, &id); }
+    ) {}
 
     VertexBufferMap::id_t VertexBufferMap::prGenerateId() {
         id_t f_id;
@@ -42,8 +52,9 @@ namespace NRV::Graphics {
     //
 
     ShaderMap::ShaderMap(Type type)
-    : NameMap()
-    {
+    : NameMap(
+        [](id_t id) { glDeleteShader(id); }
+    ) {
         pr_type = type;
     }
 
@@ -114,14 +125,14 @@ namespace NRV::Graphics {
         }        
     }
 
-    void ShaderMap::operator>>(name_t name) {
-        glDeleteShader((*this)[name]);
-        NameMap::operator>>(name);
-    }
-
     //
     // Program Map
     //
+
+    ProgramMap::ProgramMap()
+    : BindableNameMap(
+        [](id_t id) { glDeleteProgram(id); }
+    ) {}
 
     ProgramMap::id_t ProgramMap::prGenerateId() {
         return glCreateProgram();
